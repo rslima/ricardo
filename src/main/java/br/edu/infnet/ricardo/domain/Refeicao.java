@@ -25,7 +25,7 @@ import static jakarta.persistence.FetchType.EAGER;
 public class Refeicao {
     @Id
     @GeneratedValue
-    private Long codigo;
+    private Long id;
     private LocalDate data;
     private TipoRefeicao tipo;
     @OneToMany(fetch = EAGER, cascade = ALL, orphanRemoval = true)
@@ -78,7 +78,7 @@ public class Refeicao {
             return false;
         }
         Refeicao refeicao = (Refeicao) o;
-        return getCodigo() != null && Objects.equals(getCodigo(), refeicao.getCodigo());
+        return getId() != null && Objects.equals(getId(), refeicao.getId());
     }
 
     @Override

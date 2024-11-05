@@ -24,7 +24,7 @@ import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
 public abstract class Ingrediente {
     @Id
     @GeneratedValue
-    private Long codigo;
+    private Long id;
     private String nome;
     private double caloriasPorPorcao;
     private String descricaoPorcao;
@@ -53,7 +53,7 @@ public abstract class Ingrediente {
             return false;
         }
         Ingrediente that = (Ingrediente) o;
-        return getCodigo() != null && Objects.equals(getCodigo(), that.getCodigo());
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override

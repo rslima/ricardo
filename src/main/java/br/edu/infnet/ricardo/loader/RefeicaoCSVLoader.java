@@ -42,7 +42,7 @@ public class RefeicaoCSVLoader implements ApplicationRunner {
                     refeicaoService.salva(refeicao);
                 }
                 refeicao = new Refeicao();
-                refeicao.setCodigo(idRefeicao);
+                refeicao.setId(idRefeicao);
                 refeicao.setData(LocalDate.parse(csvRecord.get(1).trim()));
                 refeicao.setTipo(TipoRefeicao.valueOf(csvRecord.get(2).trim()));
             }

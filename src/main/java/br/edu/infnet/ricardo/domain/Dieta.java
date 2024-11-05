@@ -40,7 +40,7 @@ public class Dieta {
         this.refeicoes.add(refeicao);
     }
 
-    public double getCaloriasDieta() {
+    public double getCalorias() {
         return refeicoes.stream()
                 .mapToDouble(Refeicao::getCalorias)
                 .sum();

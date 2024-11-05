@@ -8,11 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -35,9 +37,16 @@ public class DietaController {
         return dietaService.buscaPorIdUsuario(usuarioId).orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
     }
 
-    @GetMapping("/{usuarioId}/datas/{data}")
-    public List<Refeicao> buscarPorData(@PathVariable Long usuarioId, @PathVariable LocalDate data) {
-        return dietaService.buscaPorData(usuarioId, data);
+    @GetMapping("/{usuarioId}/refeicoes")
+    public List<Refeicao> buscarRefeicoes(@PathVariable Long usuarioId, @RequestParam Optional<LocalDate> data) {
+
+        if (data.isPresent()) {
+            var dt = data.get();
+            return dietaService.buscaPorData(usuarioId, dt);
+        }
+
+        return dietaService.listarRefeicoes(usuarioId);
+
     }
 
 }

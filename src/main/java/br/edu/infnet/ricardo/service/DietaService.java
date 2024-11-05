@@ -40,4 +40,8 @@ public class DietaService {
                                 .toList())
                 .orElse(List.of());
     }
+
+    public List<Refeicao> listarRefeicoes(Long usuarioId) {
+        return buscaPorIdUsuario(usuarioId).map(Dieta::getRefeicoes).orElse(List.of());
+    }
 }
