@@ -1,5 +1,6 @@
 Big Mac, 499, 1 unidade, P, McDonald's, 789234789789
 McFritas grande, 422, 1 unidade, P, McDonald's, 7893246753421
+Coca Cola, 132, 310 ml, P, Coca-Cola, 7894900011159
 Coca Zero, 0, 310 ml, 1 unidade, P, Coca-Cola, 7894900709834
 Suco de laranja, 95, 200 ml, N, false, true
 Água, 0, 200 ml, N, true, true
@@ -11,3 +12,9 @@ Feijão cozido, 155, 100 g, N, false, true
 Ovo cozido, 78, 1 unidade grande, N, false, false
 Mingau de aveia, 188, 200g, N, false, false
 Pão francês, 137, 1 unidade, N, false, true
+Queijo Prato, 73, 20 g (1 fatia), P, Président, 7898955617519
+Presunto cozido, 38, 3 fatias, P, Sadia, 7891515598266
+Pão de forma, 169, 2 fatias, P, Pullman, 7896002302197
+Manteiga, 72, 10 g, P, Itambé, 7896051135456
+Açúcar, 125, 30 g, P, União, 7891910001972
+Tomate, 7, 2 fatias, N, false, true

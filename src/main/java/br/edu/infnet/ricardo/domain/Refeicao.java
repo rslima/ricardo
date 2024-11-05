@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
@@ -27,16 +28,9 @@ public class Refeicao {
     private Long codigo;
     private LocalDate data;
     private TipoRefeicao tipo;
-    @OneToMany(fetch = EAGER)
+    @OneToMany(fetch = EAGER, cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "refeicao_id")
     private List<IngredientePorcao> ingredientes;
-
-    public Refeicao(long codigo, LocalDate data, TipoRefeicao tipo) {
-        this.codigo = codigo;
-        this.data = data;
-        this.tipo = tipo;
-        this.ingredientes = new ArrayList<>();
-    }
 
     public Refeicao() {
         this.ingredientes = new ArrayList<>();

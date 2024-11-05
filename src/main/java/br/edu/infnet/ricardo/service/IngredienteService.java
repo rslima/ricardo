@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -14,11 +15,15 @@ import java.util.List;
 public class IngredienteService {
     private final IngredienteRepository ingredienteRepository;
 
-    public Ingrediente salvar(Ingrediente ingrediente) {
-        return ingredienteRepository.save(ingrediente);
+    public void salvar(Ingrediente ingrediente) {
+        ingredienteRepository.save(ingrediente);
     }
 
     public List<Ingrediente> todos() {
         return ingredienteRepository.findAll();
+    }
+
+    public Optional<Ingrediente> obtemPorId(long id) {
+        return ingredienteRepository.findById(id);
     }
 }
