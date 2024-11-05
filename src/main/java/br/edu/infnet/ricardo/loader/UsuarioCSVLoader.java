@@ -1,7 +1,8 @@
-package br.edu.infnet.ricardo.service;
+package br.edu.infnet.ricardo.loader;
 
 import br.edu.infnet.ricardo.domain.NivelAtividade;
 import br.edu.infnet.ricardo.domain.Usuario;
+import br.edu.infnet.ricardo.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVParser;

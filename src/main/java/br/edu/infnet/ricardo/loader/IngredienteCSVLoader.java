@@ -1,8 +1,9 @@
-package br.edu.infnet.ricardo.service;
+package br.edu.infnet.ricardo.loader;
 
 import br.edu.infnet.ricardo.domain.InNatura;
 import br.edu.infnet.ricardo.domain.Ingrediente;
 import br.edu.infnet.ricardo.domain.Processado;
+import br.edu.infnet.ricardo.service.IngredienteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVParser;

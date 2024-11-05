@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static jakarta.transaction.Transactional.TxType.REQUIRED;
 
@@ -28,5 +29,9 @@ public class RefeicaoService {
 
     public List<Refeicao> todas() {
         return refeicaoRepository.findAll();
+    }
+
+    public Optional<Refeicao> buscaPorId(Long id) {
+        return refeicaoRepository.findById(id);
     }
 }

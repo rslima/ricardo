@@ -1,8 +1,10 @@
-package br.edu.infnet.ricardo.service;
+package br.edu.infnet.ricardo.loader;
 
 import br.edu.infnet.ricardo.domain.Ingrediente;
 import br.edu.infnet.ricardo.domain.Refeicao;
 import br.edu.infnet.ricardo.domain.TipoRefeicao;
+import br.edu.infnet.ricardo.service.IngredienteService;
+import br.edu.infnet.ricardo.service.RefeicaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVParser;
@@ -13,7 +15,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.apache.commons.csv.CSVFormat.DEFAULT;
@@ -46,7 +47,7 @@ public class RefeicaoCSVLoader implements ApplicationRunner {
                 refeicao.setTipo(TipoRefeicao.valueOf(csvRecord.get(2).trim()));
             }
 
-            Optional<Ingrediente> optIngrediente = ingredienteService.obtemPorId(Long.parseLong(csvRecord.get(3).trim()));
+            final var optIngrediente = ingredienteService.obtemPorId(Long.parseLong(csvRecord.get(3).trim()));
             if (optIngrediente.isPresent()) {
                 Ingrediente ingrediente = optIngrediente.get();
                 final var tamanhoPorcao = Double.parseDouble(csvRecord.get(4).trim());

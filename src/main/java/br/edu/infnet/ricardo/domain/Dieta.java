@@ -1,6 +1,7 @@
 package br.edu.infnet.ricardo.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -10,7 +11,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,18 +20,17 @@ import java.util.Objects;
 @Setter
 @ToString
 public class Dieta {
+
     @Id
+    @GeneratedValue
+    private Long id;
+
     @OneToOne
     private Usuario usuario;
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "dieta_id")
     @ToString.Exclude
     private List<Refeicao> refeicoes;
-
-    public Dieta(Usuario usuario) {
-        this.usuario = usuario;
-        this.refeicoes = new ArrayList<>();
-    }
 
     public Dieta() {
         this.refeicoes = new ArrayList<>();
@@ -41,9 +40,8 @@ public class Dieta {
         this.refeicoes.add(refeicao);
     }
 
-    public double getCaloriasPorData(LocalDate data) {
+    public double getCaloriasDieta() {
         return refeicoes.stream()
-                .filter(r -> r.getData().equals(data))
                 .mapToDouble(Refeicao::getCalorias)
                 .sum();
     }
