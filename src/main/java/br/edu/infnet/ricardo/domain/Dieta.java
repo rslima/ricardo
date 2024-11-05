@@ -1,7 +1,6 @@
 package br.edu.infnet.ricardo.domain;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -22,8 +21,6 @@ import java.util.Objects;
 @ToString
 public class Dieta {
     @Id
-    @GeneratedValue
-    private Long id;
     @OneToOne
     private Usuario usuario;
     @OneToMany(orphanRemoval = true)
@@ -51,12 +48,12 @@ public class Dieta {
                 .sum();
     }
 
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
+
         if (o == null) {
             return false;
         }
@@ -79,7 +76,7 @@ public class Dieta {
             return false;
         }
         Dieta dieta = (Dieta) o;
-        return getId() != null && Objects.equals(getId(), dieta.getId());
+        return getUsuario() != null && Objects.equals(getUsuario(), dieta.getUsuario());
     }
 
     @Override

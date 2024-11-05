@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ricardo
+  datasource:
+    url: jdbc:h2:~/ricardodb
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: on
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: on

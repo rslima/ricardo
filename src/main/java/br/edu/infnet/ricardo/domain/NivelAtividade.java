@@ -1,7 +1,10 @@
 package br.edu.infnet.ricardo.domain;
 
+import lombok.Getter;
+
 import java.util.Optional;
 
+@Getter
 public enum NivelAtividade {
 
     SEDENTARIO(1.2),
@@ -11,10 +14,6 @@ public enum NivelAtividade {
     ATLETA(1.9);
 
     private final double fator;
-
-    public double getFator() {
-        return fator;
-    }
 
     NivelAtividade(double fator) {
         this.fator = fator;

@@ -1,6 +1,13 @@
-Big Mac, 499, P, McDonald's, 789234789789
-Suco de laranja, 150, N, false, true
-Água, 0, N, true, true
-Alface, 5, N, true , true
-Bis, 90, P, Lacta, 7896019743532
-Filet Mignon, 100, N, true, false
+Big Mac, 499, 1 unidade, P, McDonald's, 789234789789
+McFritas grande, 422, 1 unidade, P, McDonald's, 7893246753421
+Coca Zero, 0, 310 ml, 1 unidade, P, Coca-Cola, 7894900709834
+Suco de laranja, 95, 200 ml, N, false, true
+Água, 0, 200 ml, N, true, true
+Alface, 15, 100 g, N, true , true
+Bis, 93, 3 unidades, P, Lacta, 7896019743532
+Filet Mignon cru, 143, 100 g, N, false, false
+Arroz Tipo 1 cozido, 128, 100 g, N, false, true
+Feijão cozido, 155, 100 g, N, false, true
+Ovo cozido, 78, 1 unidade grande, N, false, false
+Mingau de aveia, 188, 200g, N, false, false
+Pão francês, 137, 1 unidade, N, false, true

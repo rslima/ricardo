@@ -12,20 +12,22 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 
-import static jakarta.persistence.InheritanceType.TABLE_PER_CLASS;
+import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
+
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Inheritance(strategy = TABLE_PER_CLASS)
+@Inheritance(strategy = SINGLE_TABLE)
 public abstract class Ingrediente {
     @Id
     @GeneratedValue
     private Long codigo;
     private String nome;
     private double caloriasPorPorcao;
+    private String descricaoPorcao;
 
     @Override
     public final boolean equals(Object o) {

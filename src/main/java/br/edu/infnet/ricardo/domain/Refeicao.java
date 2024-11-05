@@ -27,7 +27,7 @@ public class Refeicao {
     private Long codigo;
     private LocalDate data;
     private TipoRefeicao tipo;
-    @OneToMany(fetch = EAGER, orphanRemoval = true)
+    @OneToMany(fetch = EAGER)
     @JoinColumn(name = "refeicao_id")
     private List<IngredientePorcao> ingredientes;
 

@@ -31,7 +31,7 @@ public class IngredienteCSVLoader implements ApplicationRunner {
         parse.getRecords()
                 .forEach(r -> {
 
-                    final var tipoIngrediente = r.get(2).trim();
+                    final var tipoIngrediente = r.get(3).trim();
 
                     final var i = tipoIngrediente.equals("N") ?
                             getIngredienteInNatura(r) :
@@ -48,8 +48,9 @@ public class IngredienteCSVLoader implements ApplicationRunner {
 
         n.setNome(r.get(0).trim());
         n.setCaloriasPorPorcao(Double.parseDouble(r.get(1).trim()));
-        n.setOrganico(Boolean.parseBoolean(r.get(3).trim()));
-        n.setVegano(Boolean.parseBoolean(r.get(4).trim()));
+        n.setDescricaoPorcao(r.get(2).trim());
+        n.setOrganico(Boolean.parseBoolean(r.get(4).trim()));
+        n.setVegano(Boolean.parseBoolean(r.get(5).trim()));
 
         return n;
     }
@@ -60,8 +61,9 @@ public class IngredienteCSVLoader implements ApplicationRunner {
 
         p.setNome(r.get(0).trim());
         p.setCaloriasPorPorcao(Double.parseDouble(r.get(1).trim()));
-        p.setFabricante(r.get(3).trim());
-        p.setEan(r.get(4).trim());
+        p.setDescricaoPorcao(r.get(2).trim());
+        p.setFabricante(r.get(4).trim());
+        p.setEan(r.get(5).trim());
 
         i = p;
         return i;
