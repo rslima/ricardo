@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 public class DietaService {
     private final DietaRepository dietaRepository;
-    
+
     public void salvar(Dieta dieta) {
         dietaRepository.save(dieta);
     }
