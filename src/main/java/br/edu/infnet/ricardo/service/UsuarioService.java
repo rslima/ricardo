@@ -1,6 +1,8 @@
 package br.edu.infnet.ricardo.service;
 
+import br.edu.infnet.ricardo.domain.Dieta;
 import br.edu.infnet.ricardo.domain.Usuario;
+import br.edu.infnet.ricardo.repository.DietaRepository;
 import br.edu.infnet.ricardo.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +16,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
+    private final DietaRepository dietaRepository;
 
     public void salvar(Usuario usuario) {
-        usuarioRepository.save(usuario);
+        final var u = usuarioRepository.save(usuario);
+        final var d = new Dieta();
+        d.setUsuario(u);
+        d.setId(u.getId());
+        dietaRepository.save(d);
     }
 
     public List<Usuario> todos() {

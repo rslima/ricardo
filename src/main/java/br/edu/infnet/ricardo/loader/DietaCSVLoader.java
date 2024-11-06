@@ -45,6 +45,7 @@ public class DietaCSVLoader implements ApplicationRunner {
                }
                dieta = new Dieta();
                dieta.setUsuario(usuarioService.buscarPorId(idUsuario).orElse(null));
+               dieta.setId(idUsuario);
 
             }
 

@@ -1,9 +1,11 @@
 package br.edu.infnet.ricardo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +33,10 @@ public class Refeicao {
     @OneToMany(fetch = EAGER, cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "refeicao_id")
     private List<IngredientePorcao> ingredientes;
+    @ManyToOne
+    @ToString.Exclude
+    @JsonIgnore
+    private Dieta dieta;
 
     public Refeicao() {
         this.ingredientes = new ArrayList<>();
