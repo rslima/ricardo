@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface RefeicaoRepository extends JpaRepository<Refeicao, Long> {
     List<Refeicao> findByDietaUsuarioId(Long usuarioId);
@@ -16,4 +17,6 @@ public interface RefeicaoRepository extends JpaRepository<Refeicao, Long> {
     List<Refeicao> findByDietaUsuarioIdAndDataBetween(Long usuarioId, LocalDate min, LocalDate max);
 
     List<Refeicao> findByDietaUsuarioIdAndDataGreaterThanEqual(Long usuarioId, LocalDate min);
+
+    Optional<Refeicao> findByDietaUsuarioIdAndId(Long usuarioId, Long id);
 }

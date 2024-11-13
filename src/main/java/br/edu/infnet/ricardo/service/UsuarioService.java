@@ -18,12 +18,18 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final DietaRepository dietaRepository;
 
-    public void salvar(Usuario usuario) {
+    public Usuario salvar(Usuario usuario) {
         final var u = usuarioRepository.save(usuario);
-        final var d = new Dieta();
-        d.setUsuario(u);
-        d.setId(u.getId());
-        dietaRepository.save(d);
+
+        if (usuario.getId() == null) {
+            final var d = new Dieta();
+            d.setUsuario(u);
+            d.setId(u.getId());
+
+            dietaRepository.save(d);
+        }
+
+        return u;
     }
 
     public List<Usuario> todos() {

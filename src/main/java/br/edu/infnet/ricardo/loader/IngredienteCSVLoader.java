@@ -29,19 +29,17 @@ public class IngredienteCSVLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         CSVParser parse = CSVParser.parse(new ClassPathResource("ingredientes.csv").getInputStream(), UTF_8, DEFAULT);
-        parse.getRecords()
-                .forEach(r -> {
+        for (CSVRecord r : parse.getRecords()) {
+            final var tipoIngrediente = r.get(3).trim();
 
-                    final var tipoIngrediente = r.get(3).trim();
+            final var i = tipoIngrediente.equals("N") ?
+                    getIngredienteInNatura(r) :
+                    getIngredienteProcessado(r);
 
-                    final var i = tipoIngrediente.equals("N") ?
-                            getIngredienteInNatura(r) :
-                            getIngredienteProcessado(r);
+            ingredienteService.salvar(i);
 
-                    ingredienteService.salvar(i);
-
-                    log.info(i.toString());
-                });
+            log.info(i.toString());
+        }
     }
 
     private static Ingrediente getIngredienteInNatura(CSVRecord r) {

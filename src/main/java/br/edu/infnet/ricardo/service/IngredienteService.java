@@ -15,8 +15,20 @@ import java.util.Optional;
 public class IngredienteService {
     private final IngredienteRepository ingredienteRepository;
 
-    public void salvar(Ingrediente ingrediente) {
-        ingredienteRepository.save(ingrediente);
+    public Ingrediente salvar(Ingrediente ingrediente) throws IngredienteNotFoundException {
+
+        var ingrediente1 = Optional.<Ingrediente>empty();
+
+        if (ingrediente.getId() != null) {
+            ingrediente1 = ingredienteRepository.findById(ingrediente.getId());
+        }
+
+        if (ingrediente1.isPresent() || ingrediente.getId() == null) {
+            return ingredienteRepository.save(ingrediente);
+        }
+
+        throw new IngredienteNotFoundException(ingrediente.getId());
+
     }
 
     public List<Ingrediente> todos() {
@@ -25,5 +37,14 @@ public class IngredienteService {
 
     public Optional<Ingrediente> obtemPorId(long id) {
         return ingredienteRepository.findById(id);
+    }
+
+    public void deletarPorId(long id) throws IngredienteNotFoundException {
+        final var i = obtemPorId(id);
+        if (i.isPresent()) {
+            ingredienteRepository.deleteById(id);
+        } else {
+            throw new IngredienteNotFoundException(id);
+        }
     }
 }

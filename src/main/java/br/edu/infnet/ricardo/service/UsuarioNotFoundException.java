@@ -1,7 +1,7 @@
 package br.edu.infnet.ricardo.service;
 
 public class UsuarioNotFoundException extends Exception {
-    public UsuarioNotFoundException(String mensagem) {
-        super(mensagem);
+    public UsuarioNotFoundException(Long id) {
+        super("Usuário com id " + id + " não encontrado.");
     }
 }
