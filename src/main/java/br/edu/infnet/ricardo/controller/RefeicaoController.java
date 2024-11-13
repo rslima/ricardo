@@ -3,6 +3,7 @@ package br.edu.infnet.ricardo.controller;
 
 import br.edu.infnet.ricardo.domain.Refeicao;
 import br.edu.infnet.ricardo.service.IngredienteNotFoundException;
+import br.edu.infnet.ricardo.service.RefeicaoDTO;
 import br.edu.infnet.ricardo.service.RefeicaoService;
 import br.edu.infnet.ricardo.service.UsuarioNotFoundException;
 import lombok.RequiredArgsConstructor;

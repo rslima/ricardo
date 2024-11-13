@@ -51,7 +51,7 @@ public class IngredienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Ingrediente> salvar(
+    public ResponseEntity<Ingrediente> atualizar(
             @PathVariable long id,
             @RequestBody Ingrediente ingrediente) {
 

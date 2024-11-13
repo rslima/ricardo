@@ -1,4 +1,4 @@
-package br.edu.infnet.ricardo.controller;
+package br.edu.infnet.ricardo.service;
 
 import br.edu.infnet.ricardo.domain.TipoRefeicao;
 import lombok.Data;

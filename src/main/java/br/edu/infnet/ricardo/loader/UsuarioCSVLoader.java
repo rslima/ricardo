@@ -6,6 +6,7 @@ import br.edu.infnet.ricardo.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -28,22 +29,21 @@ public class UsuarioCSVLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         CSVParser parse = CSVParser.parse(new ClassPathResource("usuarios.csv").getInputStream(), UTF_8, DEFAULT);
-        parse.getRecords()
-                .forEach(r -> {
-                    final var u = new Usuario();
+        for (CSVRecord r : parse.getRecords()) {
+            final var u = new Usuario();
 
-                    u.setNome(r.get(0).trim());
-                    u.setIdade(Integer.parseInt(r.get(1).trim()));
-                    u.setEmail(r.get(2).trim());
-                    u.setSenha(r.get(3).trim());
-                    u.setSexo(r.get(4).trim().equals("F") ? FEMININO : MASCULINO);
-                    u.setAltura(Integer.parseInt(r.get(5).trim()));
-                    u.setPeso(Double.parseDouble(r.get(6).trim()));
-                    NivelAtividade.fromInt(Integer.parseInt(r.get(7).trim())).ifPresent(u::setNivelAtividade);
+            u.setNome(r.get(0).trim());
+            u.setIdade(Integer.parseInt(r.get(1).trim()));
+            u.setEmail(r.get(2).trim());
+            u.setSenha(r.get(3).trim());
+            u.setSexo(r.get(4).trim().equals("F") ? FEMININO : MASCULINO);
+            u.setAltura(Integer.parseInt(r.get(5).trim()));
+            u.setPeso(Double.parseDouble(r.get(6).trim()));
+            NivelAtividade.fromInt(Integer.parseInt(r.get(7).trim())).ifPresent(u::setNivelAtividade);
 
-                    usuarioService.salvar(u);
+            usuarioService.salvar(u);
 
-                    log.info(u.toString());
-                });
+            log.info(u.toString());
+        }
     }
 }

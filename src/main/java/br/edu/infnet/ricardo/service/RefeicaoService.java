@@ -1,7 +1,5 @@
 package br.edu.infnet.ricardo.service;
 
-import br.edu.infnet.ricardo.controller.IngredientePorcaoDTO;
-import br.edu.infnet.ricardo.controller.RefeicaoDTO;
 import br.edu.infnet.ricardo.domain.IngredientePorcao;
 import br.edu.infnet.ricardo.domain.Refeicao;
 import br.edu.infnet.ricardo.repository.DietaRepository;
