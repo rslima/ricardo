@@ -3,6 +3,7 @@ package br.edu.infnet.ricardo.controller;
 import br.edu.infnet.ricardo.domain.Ingrediente;
 import br.edu.infnet.ricardo.service.IngredienteNotFoundException;
 import br.edu.infnet.ricardo.service.IngredienteService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class IngredienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Ingrediente> salvar(@RequestBody Ingrediente ingrediente) {
+    public ResponseEntity<Ingrediente> salvar(@RequestBody @Valid Ingrediente ingrediente) {
         ingrediente.setId(null);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(ingredienteService.salvar(ingrediente));
@@ -53,7 +54,7 @@ public class IngredienteController {
     @PutMapping("/{id}")
     public ResponseEntity<Ingrediente> atualizar(
             @PathVariable long id,
-            @RequestBody Ingrediente ingrediente) {
+            @RequestBody @Valid Ingrediente ingrediente) {
 
         ingrediente.setId(id);
 

@@ -6,6 +6,7 @@ import br.edu.infnet.ricardo.service.IngredienteNotFoundException;
 import br.edu.infnet.ricardo.service.RefeicaoDTO;
 import br.edu.infnet.ricardo.service.RefeicaoService;
 import br.edu.infnet.ricardo.service.UsuarioNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -91,7 +92,7 @@ public class RefeicaoController {
     @PostMapping("/{usuarioId}/refeicoes")
     public ResponseEntity<Refeicao> adicionarRefeicao(
             @PathVariable Long usuarioId,
-            @RequestBody RefeicaoDTO refeicaoDTO) {
+            @RequestBody @Valid RefeicaoDTO refeicaoDTO) {
         try {
             return ResponseEntity.status(CREATED)
                     .body(refeicaoService.salva(usuarioId, refeicaoDTO));
@@ -105,7 +106,7 @@ public class RefeicaoController {
     public ResponseEntity<Refeicao> atualizarRefeicao(
             @PathVariable Long usuarioId,
             @PathVariable Long refeicaoId,
-            @RequestBody RefeicaoDTO refeicaoDTO) {
+            @RequestBody @Valid RefeicaoDTO refeicaoDTO) {
         try {
             refeicaoDTO.setId(refeicaoId);
             return ResponseEntity.ok(refeicaoService.salva(usuarioId, refeicaoDTO));

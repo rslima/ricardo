@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class IngredientePorcao {
     private Long id;
     @ManyToOne
     private Ingrediente ingrediente;
+    @Min(0)
     private double porcao;
 
     public double getCalorias() {

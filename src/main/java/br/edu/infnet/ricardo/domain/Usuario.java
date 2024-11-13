@@ -3,6 +3,8 @@ package br.edu.infnet.ricardo.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -21,11 +23,14 @@ public class Usuario {
     @GeneratedValue
     private Long id;
     private String nome;
+    @Min(0) @Max(125)
     private int idade;
     private String email;
     private String senha;
     private Sexo sexo;
+    @Min(40) @Max(300)
     private int altura;
+    @Min(0)
     private double peso;
     private NivelAtividade nivelAtividade;
 

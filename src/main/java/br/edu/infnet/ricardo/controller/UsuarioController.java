@@ -4,6 +4,7 @@ import br.edu.infnet.ricardo.domain.Usuario;
 import br.edu.infnet.ricardo.service.TrocaSenhaDTO;
 import br.edu.infnet.ricardo.service.UsuarioNotFoundException;
 import br.edu.infnet.ricardo.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> salvar(@RequestBody @Valid Usuario usuario) {
         usuario.setId(null);
         try {
             return ResponseEntity.status(CREATED).body(usuarioService.salvar(usuario));
@@ -55,7 +56,7 @@ public class UsuarioController {
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> atualizar(
             @PathVariable long id,
-            @RequestBody Usuario usuario) {
+            @RequestBody @Valid Usuario usuario) {
         usuario.setId(id);
         try {
             return ResponseEntity.ok(usuarioService.salvar(usuario));
@@ -77,7 +78,7 @@ public class UsuarioController {
     }
 
     @PatchMapping("/{id}/senha")
-    public ResponseEntity<Usuario> atualizarSenha(@PathVariable long id, @RequestBody TrocaSenhaDTO senhaDTO) {
+    public ResponseEntity<Usuario> atualizarSenha(@PathVariable long id, @RequestBody @Valid TrocaSenhaDTO senhaDTO) {
          senhaDTO.setId(id);
          try {
              return ResponseEntity.ok(usuarioService.trocaSenha(senhaDTO));
