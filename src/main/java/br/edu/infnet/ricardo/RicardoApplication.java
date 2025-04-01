@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RicardoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RicardoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RicardoApplication.class, args);
+    }
 
 }
