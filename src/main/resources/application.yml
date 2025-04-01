@@ -2,15 +2,12 @@ spring:
   application:
     name: ricardo
   datasource:
-    url: jdbc:h2:~/ricardodb
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: on
+    url: jdbc:postgresql://localhost:5432/ricardo
+    username: ricash
+    password: secret
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: on
   mvc:
     problemdetails:
