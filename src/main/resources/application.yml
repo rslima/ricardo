@@ -12,3 +12,14 @@ spring:
   mvc:
     problemdetails:
       enabled: on
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+  endpoint:
+    health:
+      show-details: always
