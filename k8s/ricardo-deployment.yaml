@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ricardo
+  labels:
+    app: ricardo
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: ricardo
+  template:
+    metadata:
+      labels:
+        app: ricardo
+    spec:
+      containers:
+        - name: ricardo-container
+          image: rslima/ricardo:0.0.1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ENVIRONMENT
+              value: "production"
+          livenessProbe:
+            httpGet:
+              path: /api/v1/ingredientes
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/v1/ingredientes
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
