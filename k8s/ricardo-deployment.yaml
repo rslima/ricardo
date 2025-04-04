@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ricardo-container
-          image: rslima/ricardo:0.0.1
+          image: rslima/ricardo:0.0.3
           ports:
             - containerPort: 8080
           env:
