@@ -44,6 +44,10 @@ jobs:
       run: |
         mkdir -p ~/.kube
         echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+        mkdir -p .minkube/profiles/minikube
+        echo "${{ secrets.KUBE_CA_CRT }}" > .minikube/ca.crt
+        echo "${{ secrets.KUBE_CLIENT_CRT }}" > .minikube/profiles/minikube/client.crt
+        echo "${{ secrets.KUBE_CLIENT_KEY }}" > .minikube/profiles/minikube/client.key
     - name: deploy image to cluster
       run: kubectl apply -f k8s/ricardo-deployment.yaml
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
