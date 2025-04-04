@@ -38,4 +38,12 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Push image
       run: docker push rslima/ricardo:latest
+    - name: Setup Kubectl
+      uses: azure/setup-kubectl@v4
+    - name: setup kube config
+      run: |
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+    - name: deploy image to cluster
+      run: kubectl apply -f k8s/ricardo-deployment.yaml
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
