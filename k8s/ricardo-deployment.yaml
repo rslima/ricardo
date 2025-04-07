@@ -16,7 +16,11 @@ spec:
     spec:
       containers:
         - name: ricardo-container
-          image: rslima/ricardo:latest
+          image: rslima/ricardo:0.0.4
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 1Gi
           ports:
             - containerPort: 8080
           env:
