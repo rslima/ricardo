@@ -8,7 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: on
+    show-sql: off
   mvc:
     problemdetails:
       enabled: on
