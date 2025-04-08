@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ricardo-container
-          image: rslima/ricardo:0.0.4
+          image: rslima/ricardo:0.0.5
           imagePullPolicy: Always
           resources:
             limits:
