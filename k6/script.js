@@ -5,7 +5,7 @@ import { Rate } from 'k6/metrics';
 export const errorRate = new Rate('errors');
 
 export default function () {
-    const url = 'http://127.0.0.1:61949/swagger-ui/index.html';
+    const url = 'http://127.0.0.1:62453/swagger-ui/index.html';
     const params = {
         headers: {
             'Content-Type': 'application/json',
